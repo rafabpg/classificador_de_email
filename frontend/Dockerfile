@@ -1,12 +1,14 @@
-FROM node:20-alpine
-
-EXPOSE 5173
+FROM node:20
 
 WORKDIR /app/frontend
 
 COPY package*.json ./
+COPY vite.config.ts ./
 
-RUN npm install
+EXPOSE 5173
+
+RUN npm install && \
+    npm install tailwindcss @tailwindcss/vite
 
 COPY . .
 
