@@ -2,7 +2,7 @@ FROM python:3.11.13-alpine3.21
 
 EXPOSE 8000
 
-WORKDIR /app
+WORKDIR /app/backend
 
 COPY requirements.txt .
 
