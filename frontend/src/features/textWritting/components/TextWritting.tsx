@@ -6,6 +6,18 @@ interface TextFormProps {
 	isLoading: boolean;
 }
 
+/**
+ * TextForm component renders a form for users to input and submit text for analysis.
+ *
+ * @param {Object} props - Component props.
+ * @param {(text: string) => void} props.onSubmit - Callback function invoked when the form is submitted with the entered text.
+ * @param {boolean} props.isLoading - Indicates whether the form is in a loading state, disabling input and submit actions.
+ *
+ * @returns {JSX.Element} The rendered text input form with character count, clear button, and submit button.
+ *
+ * @example
+ * <TextForm onSubmit={handleTextSubmit} isLoading={isAnalyzing} />
+ */
 export const TextForm = ({ onSubmit, isLoading }: TextFormProps) => {
 	const [text, setText] = useState("");
 

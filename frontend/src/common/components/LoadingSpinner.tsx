@@ -2,6 +2,14 @@ interface LoadingPulseProps {
 	isVisible?: boolean;
 }
 
+/**
+ * A component that displays a loading pulse animation in the center of the screen.
+ *
+ * @param {{ isVisible?: boolean }} props
+ * @prop {boolean} [isVisible=true] Whether the component should be visible or not.
+ *
+ * @returns {React.ReactElement} The loading pulse animation.
+ */
 const LoadingPulse = ({ isVisible = true }: LoadingPulseProps) => {
 	if (!isVisible) return null;
 

@@ -1,13 +1,17 @@
 import api from "../config/api";
 
-export interface UploadResponse {
-	success: boolean;
-	message?: string;
-	data?: any;
-}
 
+/**
+ * apiFiles returns an object with two functions, uploadFile and uploadText.
+ *
+ * Both functions make a POST request to the "/analysis" endpoint with the provided
+ * file or text. The response from the server is returned as the result of the
+ * function call.
+ *
+ * @returns {{ uploadFile: (file: File) => Promise<any>, uploadText: (text: string) => Promise<any> }}
+ */
 export function apiFiles() {
-	async function uploadFile(file: File): Promise<UploadResponse> {
+	async function uploadFile(file: File){
 		const formData = new FormData();
 		formData.append("file", file);
 
@@ -18,7 +22,7 @@ export function apiFiles() {
 		return response.data;
 	}
 
-	async function uploadText(text: string): Promise<UploadResponse> {
+	async function uploadText(text: string) {
 		const formData = new FormData();
 		formData.append("text", text);
 

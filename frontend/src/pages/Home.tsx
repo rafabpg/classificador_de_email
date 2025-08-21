@@ -9,6 +9,19 @@ import { ResponseDisplay } from "../common/components/ResponseDisplay";
 import LoadingPulse from "../common/components/LoadingSpinner";
 import type { ResponseAnalysis } from "../common/IResponse";
 
+/**
+ * A component to render the home page.
+ *
+ * It renders a form with a tabbed interface to switch between two modes of data entry:
+ * uploading a file or writing text.
+ *
+ * The component also renders a loading pulse animation when the request is being sent.
+ * The component also renders a response display component to show the response from the server.
+ *
+ * The component uses the useUploadFile and useUploadText hooks to send the request to the server.
+ *
+ * @returns {React.ReactElement} The home page component.
+ */
 export const Home = () => {
 	const [activeTab, setActiveTab] = useState("upload");
 	const [response, setResponse] = useState<ResponseAnalysis | null>(null);

@@ -6,6 +6,33 @@ interface UploadFormProps {
 	isLoading: boolean;
 }
 
+/**
+ * A component to render a file upload form.
+ *
+ * Props:
+ * - `onSubmit`: A callback to be called when the form is submitted.
+ * - `isLoading`: A boolean indicating if the form is currently being submitted.
+ *
+ * The component renders a form with an input field for file selection and a
+ * submit button. The form is decorated with a dashed border and a colored
+ * background that changes depending on whether a file is selected or not.
+ * The component also handles drag and drop events to allow users to drag a file
+ * and drop it on the form to select it.
+ *
+ * The component is designed to be used with the `useUploadFile` hook, which
+ * provides an `onSubmit` callback that can be passed to the component.
+ *
+ * @example
+ * import { useUploadFile } from "../hooks/useUploadFile";
+ *
+ * export const MyComponent = () => {
+ *   const { onSubmit, isLoading } = useUploadFile();
+ *
+ *   return (
+ *     <UploadForm onSubmit={onSubmit} isLoading={isLoading} />
+ *   );
+ * };
+ */
 export const UploadForm = ({ onSubmit, isLoading }: UploadFormProps) => {
 	const [file, setFile] = useState<File | null>(null);
 	const [isDragging, setIsDragging] = useState(false);

@@ -5,6 +5,18 @@ interface TabsProps {
 	setActiveTab: (tab: string) => void;
 }
 
+/**
+ * Component to render a tabbed interface to switch between two modes of data entry:
+ * uploading a file or writing text.
+ *
+ * Props:
+ * - `activeTab`: The currently active tab, which should be either "upload" or "text".
+ * - `setActiveTab`: A callback to update the active tab.
+ *
+ * The component renders a container with two buttons, one for each tab.
+ * The active tab is highlighted with a different background color and a shadow.
+ * The component does not handle any state itself, it only renders the UI based on the props.
+ */
 export const Tabs = ({ activeTab, setActiveTab }: TabsProps) => (
 	<div className="flex bg-neutral-200 p-1.5 rounded-xl mb-6 shadow-soft">
 		<button

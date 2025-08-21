@@ -6,6 +6,23 @@ interface ResponseDisplayProps {
   onClear?: () => void;
 }
 
+/**
+ * Component to display a response from the API, with a clear button.
+ *
+ * Props:
+ * - `response`: The response from the API to display.
+ * - `onClear`: A callback to clear the response.
+ *
+ * The component only renders if `response` is not null.
+ *
+ * The component displays a container with a category and a detail.
+ * The category is displayed as a rounded badge with a background color
+ * depending on the category of the response.
+ * The detail is displayed as a text block below the category.
+ *
+ * If `onClear` is provided, a clear button is displayed in the top right
+ * corner of the container.
+ */
 export const ResponseDisplay = ({
   response,
   onClear,

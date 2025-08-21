@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
 
+/**
+ * A component that renders a 404 page not found message.
+ *
+ * @returns {React.ReactElement} The 404 page not found component.
+ */
 export const Not_Found = () => {
 	return (
 		<div className="min-h-screen flex flex-col items-center justify-center bg-background font-sans text-neutral-700 px-4">
