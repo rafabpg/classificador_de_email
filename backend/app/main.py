@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import APIRouter
+from app.api.controllers.analysis import analysis_router
 
 app = FastAPI(
     title="Classificator Emails API",
@@ -18,5 +19,7 @@ app.add_middleware(
 )
 
 api_router = APIRouter(prefix="/api")
+
+api_router.include_router(analysis_router)
 
 app.include_router(api_router)

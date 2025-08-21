@@ -10,6 +10,8 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app/backend
+    networks:
+      - classifier-network-bridge
   frontend:
     container_name: frontend
     build:
@@ -20,3 +22,10 @@ services:
     volumes:
       - ./frontend:/app/frontend
       - /app/frontend/node_modules
+    networks:
+      - classifier-network-bridge
+
+networks:
+  classifier-network-bridge:
+    driver: bridge
+  
