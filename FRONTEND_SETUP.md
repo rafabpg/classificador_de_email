@@ -19,11 +19,11 @@ Este guia descreve como configurar e executar o **frontend** do projeto, desenvo
 
 2. Crie o arquivo `.env` na raiz do projeto.
 
-2. ✍️ Adicione variáveis ​​ao `.env` conforme `.env_example`:
+3. ✍️ Adicione variáveis ​​ao `.env` conforme `.env_example`:
 
 `` VITE_BASE_URL='url_backend' `` 
 
-3. 🚀 Rode o frontend: 
+4. 🚀 Rode o frontend: 
 
 `` npm run dev ``
 

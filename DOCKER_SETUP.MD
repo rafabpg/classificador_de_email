@@ -1,6 +1,6 @@
 # ⚙️ Setup Projeto (Docker)
 
-Este guia descreve como configurar e executar o **projeto** utilizando o docker.
+Este guia descreve como configurar e executar o **projeto** utilizando o **Docker**.
 
 ---
 

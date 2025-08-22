@@ -23,10 +23,12 @@ O objetivo é **economizar tempo da equipe**, que não precisará mais revisar m
 
 ## Configurações locais 
 
-- [⚙️ **Backend**]()
-- [⚙️ **FrontEnd**]()
-- [⚙️ **Docker**]()
+- [⚙️ **Backend**](https://github.com/rafabpg/classificador_de_email/blob/main/BACKEND_SETUP.md)
+- [⚙️ **FrontEnd**](https://github.com/rafabpg/classificador_de_email/blob/main/BACKEND_SETUP.md)
+- [⚙️ **Docker**](https://github.com/rafabpg/classificador_de_email/blob/main/BACKEND_SETUP.md)
 
-## [📂 Diagram de Fluxo do Projeto]()
+---
+
+### [📂 Diagram de Fluxo do Projeto]((https://github.com/rafabpg/classificador_de_email/blob/main/DIAGRAMA_FLUXO.md))
 
 
