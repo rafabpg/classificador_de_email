@@ -1,5 +1,6 @@
 import { FiX } from "react-icons/fi";
 import type { ResponseAnalysis } from "../IResponse";
+import { useEffect } from "react";
 
 interface ResponseDisplayProps {
   response: ResponseAnalysis | null;
@@ -28,7 +29,9 @@ export const ResponseDisplay = ({
   onClear,
 }: ResponseDisplayProps) => {
   if (!response) return null;
-
+  useEffect(()=>{
+    console.log(response)
+  },[])
   const categoryColor =
     response.category === "Produtivo" 
       ? "bg-primary-500" 
@@ -58,7 +61,7 @@ export const ResponseDisplay = ({
       </div>
       
       <div className="text-neutral-700 text-base leading-relaxed whitespace-pre-wrap font-normal">
-        {response.detail}
+        {response.details}
       </div>
       
     </div>
