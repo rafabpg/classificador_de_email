@@ -29,6 +29,8 @@ O objetivo é **economizar tempo da equipe**, que não precisará mais revisar m
 
 ---
 
-### [📂 Diagram de Fluxo do Projeto]((https://github.com/rafabpg/classificador_de_email/blob/main/DIAGRAMA_FLUXO.md))
+### 📂 Diagram de Fluxo do Projeto
+<img width="986" height="763" alt="image" src="https://github.com/user-attachments/assets/ebbe6ace-7927-4632-91f8-78176a3ef35a" />
+
 
 
