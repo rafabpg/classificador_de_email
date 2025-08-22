@@ -1,7 +1,8 @@
 from fastapi import APIRouter,Depends, UploadFile, File, Form
 from app.api.decorators.decorators import create
 from app.api.dependencies.dependencies import get_analysis_use_case
-from typing import Any,Optional
+from app.api.schemas.responses import AnalysisResponse
+from typing import Optional
 
 analysis_router = APIRouter(prefix="/analysis", tags=["Files"])
 
@@ -12,9 +13,9 @@ analysis_router = APIRouter(prefix="/analysis", tags=["Files"])
         text=text
     ),
     rule="",
-    response_model=Any,
+    response_model=AnalysisResponse,
     description="Faz o upload de um arquivo ou envia um texto bruto",
-    status_code=201
+    status_code=200
 )
 async def upload_file_endpoint(
     file: Optional[UploadFile] = File(None),

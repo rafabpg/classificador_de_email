@@ -9,8 +9,12 @@ class ErrorResponse(BaseModel):
     detail: str              
     error_type: str           
 
+class ServiceError(Exception):
+    pass
+
 EXCEPTION_STATUS_CODES = {
     ValueError: status.HTTP_400_BAD_REQUEST,
+    ServiceError: status.HTTP_500_INTERNAL_SERVER_ERROR,
     PermissionError: status.HTTP_403_FORBIDDEN,
     KeyError: status.HTTP_404_NOT_FOUND,
 }
