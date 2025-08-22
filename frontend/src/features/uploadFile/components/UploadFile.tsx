@@ -184,7 +184,7 @@ export const UploadForm = ({ onSubmit, isLoading }: UploadFormProps) => {
           ${
 						isLoading || !file
 							? "bg-neutral-200 text-neutral-500 cursor-not-allowed"
-							: "bg-gradient-to-r from-primary-500 to-primary-700 text-white hover:from-primary-600 hover:to-primary-800 shadow-md hover:shadow-lg"
+							: "bg-gradient-to-r cursor-pointer from-primary-500 to-primary-700 text-white hover:from-primary-600 hover:to-primary-800 shadow-md hover:shadow-lg"
 					}`}
 			>
 				<FiSend className="h-4 w-4" />

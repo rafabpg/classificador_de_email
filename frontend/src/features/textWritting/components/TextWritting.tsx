@@ -76,7 +76,7 @@ export const TextForm = ({ onSubmit, isLoading }: TextFormProps) => {
           ${
 						isLoading || !text.trim()
 							? "bg-neutral-200 text-neutral-500 cursor-not-allowed"
-							: "bg-gradient-to-r from-accent-400 to-accent-600 text-white hover:from-accent-500 hover:to-accent-700 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+							: "bg-gradient-to-r from-accent-400 to-accent-600 text-white cursor-pointer hover:from-accent-500 hover:to-accent-700 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
 					}`}
 			>
 				<FiSend className="h-4 w-4" />
