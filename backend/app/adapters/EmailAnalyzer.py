@@ -10,10 +10,9 @@ class EmailAnalyzer(IEmailAnalyzer):
 
         It sets the API URL classifier, the API URL suggestion, the API token and the timeout for the HTTPX client.
         """
-        self.api_url_classifier = settings.API_URL_CLASSIFIER
-        self.api_url_suggestion = settings.API_URL_SUGGESTION
+        self.api_url = settings.API_URL
         self.api_token = settings.API_TOKEN
-        self.timeout = httpx.Timeout(30.0 )
+        self.timeout = httpx.Timeout(60.0)
         self.headers = {
             "Authorization": f"Bearer {self.api_token}",
             "Content-Type": "application/json"
@@ -57,8 +56,7 @@ class EmailAnalyzer(IEmailAnalyzer):
         Makes a POST request to the AI model to classify the given email content
         into one of the two categories: "Produtivo" or "Improdutivo".
 
-        The request is made to the `api_url_classifier` endpoint, with the
-        `candidate_labels` parameter set to `["Produtivo", "Improdutivo"]`.
+        The request is made to the `api_url` endpoint
 
         The response is expected to be a JSON object with a single key-value pair,
         where the key is `labels` and the value is a list with a single element,
@@ -72,13 +70,29 @@ class EmailAnalyzer(IEmailAnalyzer):
         Returns:
             str: The classification of the email content
         """
-        classification = await self._post_api({
-            "inputs": email_content,
-            "parameters": {
-                "candidate_labels": ["Produtivo", "Improdutivo"]
-            }
-        }, self.api_url_classifier)
-        return classification.get("labels")[0]
+        input_for_classification = f"""
+            Classifique o seguinte email como 'Produtivo' ou 'Improdutivo' com base nas definições abaixo:
+
+            - Produtivo: Emails que requerem uma ação ou resposta específica (ex.: solicitações de suporte técnico, atualização sobre casos em aberto, dúvidas sobre o sistema).
+            - Improdutivo: Emails que não necessitam de uma ação imediata (ex.: mensagens de felicitações, agradecimentos).
+
+            CONTEÚDO DO EMAIL:
+            {email_content}
+
+            Apenas retorne 'Produtivo' ou 'Improdutivo'.
+            """
+        payload = {
+            "model": "deepseek-ai/DeepSeek-V3-0324",
+            "messages": [
+                {"role": "system", "content": input_for_classification},
+            ],
+            "max_tokens": 200, 
+            "temperature": 0.3,
+            "top_p": 0.8
+        }
+        classification = await self._post_api(payload, self.api_url)
+      
+        return classification['choices'][0]['message']['content']
 
     async def _sugestion_of_response(self,category:str,email_content:str)-> str:
 
@@ -86,10 +100,9 @@ class EmailAnalyzer(IEmailAnalyzer):
         Makes a POST request to the AI model to generate a suggested response 
         given the category and content of the email.
 
-        The request is made to the `api_url_suggestion` endpoint, with the 
-        `gemma-2-2b-it` model and the following parameters:
+        The request is made to the `api_url` endpoint, with the 
+        `deepseek-ai/DeepSeek-V3-0324` model and the following parameters:
 
-        - `model`: `google/gemma-2-2b-it`
         - `messages`: A list of two messages, one with the system prompt and 
           one with the user prompt.
         - `max_tokens`: 200
@@ -143,7 +156,7 @@ class EmailAnalyzer(IEmailAnalyzer):
         """
 
         payload = {
-            "model": "google/gemma-2-2b-it",
+            "model": "deepseek-ai/DeepSeek-V3-0324",
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -153,7 +166,7 @@ class EmailAnalyzer(IEmailAnalyzer):
             "top_p": 0.8
         }
     
-        suggestion = await self._post_api(payload, self.api_url_suggestion)
+        suggestion = await self._post_api(payload, self.api_url)
         content = suggestion['choices'][0]['message']['content']
         return content
 

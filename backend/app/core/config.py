@@ -14,8 +14,7 @@ class Settings(BaseSettings):
     """
     
     API_TOKEN: str
-    API_URL_CLASSIFIER: Optional[str] = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli"
-    API_URL_SUGGESTION: Optional[str] = "https://router.huggingface.co/nebius/v1/chat/completions"
+    API_URL: Optional[str] = "https://router.huggingface.co/nebius/v1/chat/completions"
     DEBUG:bool = True
     CORS_ORIGINS: str = "*"
 
