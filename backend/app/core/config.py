@@ -13,9 +13,11 @@ class Settings(BaseSettings):
         extra (str): Allows extra fields in the environment configuration (default: "allow").
     """
     
-    API_TOKEN: Optional[str]
+    API_TOKEN: str
     API_URL_CLASSIFIER: Optional[str] = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli"
     API_URL_SUGGESTION: Optional[str] = "https://router.huggingface.co/nebius/v1/chat/completions"
+    DEBUG:bool = True
+    CORS_ORIGINS: str = "*"
 
     class Config:
         env_file = ".env"
