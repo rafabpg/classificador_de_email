@@ -5,13 +5,15 @@ class Settings(BaseSettings):
     """
     Settings configuration class for application environment variables.
     Attributes:
-        API_TOKEN (Optional[str]): Token used for API authentication. Loaded from environment variables if available.
-        API_URL_CLASSIFIER (Optional[str]): URL for the classifier API endpoint. Defaults to HuggingFace BART MNLI model.
-        API_URL_SUGGESTION (Optional[str]): URL for the suggestion API endpoint. Defaults to HuggingFace chat completions.
+        API_TOKEN (str): Token used for API authentication.
+        API_URL (Optional[str]): URL endpoint for the API. Defaults to "https://router.huggingface.co/nebius/v1/chat/completions".
+        DEBUG (bool): Flag to enable or disable debug mode. Defaults to True.
+        CORS_ORIGINS (str): Allowed origins for CORS. Defaults to "*".
     Config:
-        env_file (str): Specifies the environment file to load variables from (default: ".env").
-        extra (str): Allows extra fields in the environment configuration (default: "allow").
+        env_file (str): Path to the environment file. Defaults to ".env".
+        extra (str): Specifies handling of extra fields. Set to "allow".
     """
+
     
     API_TOKEN: str
     API_URL: Optional[str] = "https://router.huggingface.co/nebius/v1/chat/completions"

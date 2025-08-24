@@ -53,22 +53,29 @@ class EmailAnalyzer(IEmailAnalyzer):
         
     async def _classify_email_content(self, email_content: str) -> str:
         """
-        Makes a POST request to the AI model to classify the given email content
-        into one of the two categories: "Produtivo" or "Improdutivo".
+        Classify the given email content into 'Produtivo' or 'Improdutivo' categories.
 
-        The request is made to the `api_url` endpoint
+        The classification is done using the DeepSeek-V3-0324 model from the Hugging Face
+        Transformers library. The input to the model is a string with the following format:
 
-        The response is expected to be a JSON object with a single key-value pair,
-        where the key is `labels` and the value is a list with a single element,
-        which is the classification of the email content.
+        "Classifique o seguinte email como 'Produtivo' ou 'Improdutivo' com base nas definições abaixo:
 
-        The classification is then returned as a string.
+        - Produtivo: Emails que requerem uma ação ou resposta específica (ex.: solicitações de suporte técnico, atualização sobre casos em aberto, dúvidas sobre o sistema).
+        - Improdutivo: Emails que não necessitam de uma ação imediata (ex.: mensagens de felicitações, agradecimentos).
+
+        CONTEÚDO DO EMAIL:
+        {email_content}
+
+        Apenas retorne 'Produtivo' ou 'Improdutivo'."
+
+        The model is configured to generate a response with a maximum of 200 tokens,
+        using a temperature of 0.3 and a top_p of 0.8.
 
         Args:
-            email_content (str): The content of the email to classify
+            email_content (str): The content of the email to be classified
 
         Returns:
-            str: The classification of the email content
+            str: The classification of the email content ('Produtivo' or 'Improdutivo')
         """
         input_for_classification = f"""
             Classifique o seguinte email como 'Produtivo' ou 'Improdutivo' com base nas definições abaixo:
