@@ -7,11 +7,19 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi import APIRouter
 from app.api.controllers.analysis import analysis_router
 from app.core.config import settings
+from app.core.logger import logger
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    download_nltk_data()
+    logger.info("Iniciando aplicação...")
+    logger.debug("Debug mode: %s", settings.DEBUG)
+    try:
+        download_nltk_data()
+        logger.info("NLTK data baixado com sucesso.")
+    except Exception as e:
+        logger.error("Erro ao baixar NLTK data: %s", e)
     yield
+    logger.info("Finalizando aplicação...")
 
 app = FastAPI(
     title="Classificator Emails API",
