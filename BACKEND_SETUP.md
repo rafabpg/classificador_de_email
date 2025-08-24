@@ -9,6 +9,8 @@ Este guia descreve como configurar e executar o **backend** do projeto, desenvol
 - Python
 - Conta no Hugging Face
 
+---
+
 ## 🧠 Passo a Passo de Configuração
 
 - ``cd backend``
@@ -62,5 +64,3 @@ Este guia descreve como configurar e executar o **backend** do projeto, desenvol
 6. 🚀 Rode o servidor: 
 
 `` uvicorn app.main:app --reload ``
-
----

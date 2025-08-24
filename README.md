@@ -15,9 +15,9 @@ O objetivo é **economizar tempo da equipe**, que não precisará mais revisar m
 
 ---
 
-## 🌐 Deploy - Render
+## 🌐 Deploy - CloudFlare e Render
 
-[🔗 **Acesse o projeto em produção**]()
+[🔗 **Acesse o projeto em produção**](https://classificador-de-email.pages.dev/)
 
 ---
 

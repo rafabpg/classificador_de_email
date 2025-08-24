@@ -9,6 +9,8 @@ Este guia descreve como configurar e executar o **frontend** do projeto, desenvo
 - NodeJS
 - NPM
 
+---
+
 ## 🧠 Passo a Passo de Configuração
 
 - ``cd frontend``
@@ -26,5 +28,3 @@ Este guia descreve como configurar e executar o **frontend** do projeto, desenvo
 4. 🚀 Rode o frontend: 
 
 `` npm run dev ``
-
----
