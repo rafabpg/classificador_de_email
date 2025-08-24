@@ -17,8 +17,8 @@ class Settings(BaseSettings):
     
     API_TOKEN: str
     API_URL: Optional[str] = "https://router.huggingface.co/nebius/v1/chat/completions"
-    DEBUG:bool = True
-    CORS_ORIGINS: str = "*"
+    DEBUG: Optional[bool] = True
+    CORS_ORIGINS: Optional[str] = "*"
 
     class Config:
         env_file = ".env"
