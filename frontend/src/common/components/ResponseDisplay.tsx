@@ -33,7 +33,7 @@ export const ResponseDisplay = ({
     console.log(response)
   },[])
   const categoryColor =
-    response.category === "Produtivo" 
+    response.category.toLowerCase() === "produtivo" 
       ? "bg-primary-500" 
       : "bg-danger-500";
 
