@@ -39,7 +39,11 @@ const useUploadFile = () => {
     },
     onError: (error: any) => {
       stopPulse();
-      showError(`Erro ao enviar arquivo: ${error?.response?.data?.detail}`);
+      if (error?.response?.data?.detail) {
+        showError(`Erro ao enviar arquivo: ${error?.response?.data?.detail}`);
+      }else{
+        showError("Erro no servidor, tente novamente mais tarde!");
+      }
     },
   });
 
